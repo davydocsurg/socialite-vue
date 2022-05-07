@@ -1,3 +1,15 @@
+<script setup>
+  import Register from "@/components/Register";
+
+  export default {
+    components: {
+      Register,
+    },
+  };
+</script>
+
 <template>
-  <div></div>
+  <section>
+    <Register />
+  </section>
 </template>
