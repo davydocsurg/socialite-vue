@@ -30,7 +30,7 @@
   <div class="mt-10">
     <h4 class="w-full text-4xl font-medium text-center text-white">Log In</h4>
     <div
-      class="flex flex-col items-center justify-between w-full px-10 pt-10 pb-20 lg:pt-10 lg:flex-col"
+      class="flex flex-col items-center justify-between w-full px-10 pt-2 pb-20 lg:pt-2 lg:flex-col"
     >
       <div class="relative z-10 w-full max-w-2xl mt-20 lg:mt-0 lg:w-5/12">
         <div
@@ -48,7 +48,7 @@
 
             <div class="relative">
               <label
-                class="absolute px-2 ml-2 -mt-3 font-medium text-gray-700 bg-gray-200"
+                class="absolute px-2 ml-2 -mt-3 font-medium text-dark bg-gray-200"
               >
                 Email or Handle
               </label>
@@ -58,7 +58,7 @@
                 v-model="form.login"
                 type="text"
                 name="login"
-                class="block w-full px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
+                class="block w-full text-dark px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
               />
 
               <HasError :form="form" field="login" />
@@ -67,7 +67,7 @@
             <div class="relative">
               <label
                 for="password"
-                class="absolute px-2 ml-2 -mt-3 font-medium text-gray-700 bg-gray-200"
+                class="absolute px-2 ml-2 -mt-3 font-medium text-dark bg-gray-200"
                 >Password
               </label>
               <input
@@ -75,7 +75,7 @@
                 v-model="form.password"
                 type="text"
                 name="password"
-                class="block w-full px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
+                class="block w-full text-dark px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
               />
               <HasError :form="form" field="password" />
             </div>

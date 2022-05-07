@@ -17,7 +17,7 @@
     }),
 
     methods: {
-      async register() {
+      async SignUpService() {
         const response = await this.form.post("/api/login");
         // ...
         console.log("signin");
@@ -30,7 +30,7 @@
   <div class="mt-10">
     <h4 class="w-full text-4xl font-medium text-center text-white">Register</h4>
     <div
-      class="flex flex-col items-center justify-between w-full px-10 pt-10 pb-20 lg:pt-10 lg:flex-col"
+      class="flex flex-col items-center justify-between w-full px-10 pt-3 pb-20 lg:pt-2 lg:flex-col"
     >
       <div class="relative z-10 w-full max-w-2xl mt-20 lg:mt-0 lg:w-5/12">
         <div
@@ -48,7 +48,7 @@
 
             <div class="relative">
               <label
-                class="absolute px-2 ml-2 -mt-3 font-medium text-gray-700 bg-gray-200"
+                class="absolute px-2 ml-2 -mt-3 font-medium text-dark bg-gray-200"
               >
                 First Name
               </label>
@@ -58,7 +58,7 @@
                 v-model="form.first_name"
                 type="text"
                 name="first_name"
-                class="block w-full px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
+                class="block w-full text-dark px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
               />
 
               <HasError :form="form" field="first_name" />
@@ -66,7 +66,7 @@
 
             <div class="relative">
               <label
-                class="absolute px-2 ml-2 -mt-3 font-medium text-gray-700 bg-gray-200"
+                class="absolute px-2 ml-2 -mt-3 font-medium text-dark bg-gray-200"
               >
                 Last Name
               </label>
@@ -76,7 +76,7 @@
                 v-model="form.last_name"
                 type="text"
                 name="last_name"
-                class="block w-full px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
+                class="block w-full text-dark px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
               />
 
               <HasError :form="form" field="last_name" />
@@ -84,7 +84,7 @@
 
             <div class="relative">
               <label
-                class="absolute px-2 ml-2 -mt-3 font-medium text-gray-700 bg-gray-200"
+                class="absolute px-2 ml-2 -mt-3 font-medium text-dark bg-gray-200"
               >
                 Email
               </label>
@@ -94,7 +94,7 @@
                 v-model="form.email"
                 type="email"
                 name="email"
-                class="block w-full px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
+                class="block w-full text-dark px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
               />
 
               <HasError :form="form" field="email" />
@@ -102,7 +102,7 @@
 
             <div class="relative">
               <label
-                class="absolute px-2 ml-2 -mt-3 font-medium text-gray-700 bg-gray-200"
+                class="absolute px-2 ml-2 -mt-3 font-medium text-dark bg-gray-200"
               >
                 Handle
               </label>
@@ -112,7 +112,7 @@
                 v-model="form.handle"
                 type="handle"
                 name="handle"
-                class="block w-full px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
+                class="block w-full text-dark px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
               />
 
               <HasError :form="form" field="handle" />
@@ -121,15 +121,15 @@
             <div class="relative">
               <label
                 for="password"
-                class="absolute px-2 ml-2 -mt-3 font-medium text-gray-700 bg-gray-200"
+                class="absolute px-2 ml-2 -mt-3 font-medium text-dark bg-gray-200"
                 >Password
               </label>
               <input
                 id="password"
                 v-model="form.password"
-                type="text"
+                type="password"
                 name="password"
-                class="block w-full px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
+                class="block w-full text-dark px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
               />
               <HasError :form="form" field="password" />
             </div>
@@ -137,16 +137,16 @@
             <div class="relative">
               <label
                 for="password"
-                class="absolute px-2 ml-2 -mt-3 font-medium text-gray-700 bg-gray-200"
+                class="absolute px-2 ml-2 -mt-3 font-medium text-dark bg-gray-200"
               >
                 Confirm Password
               </label>
               <input
                 id="confirm_password"
                 v-model="form.confirm_password"
-                type="text"
+                type="password"
                 name="confirm_password"
-                class="block w-full px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
+                class="block w-full text-dark px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
               />
               <HasError :form="form" field="confirm_password" />
             </div>

@@ -1,4 +1,84 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+  --textDark: #151515;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.fade-leave-active {
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+  opacity: 0;
+}
+
+.slide-enter-active {
+  -webkit-animation: slide-in 200ms ease-out forwards;
+          animation: slide-in 200ms ease-out forwards;
+}
+
+.slide-leave-active {
+  -webkit-animation: slide-out 200ms ease-out forwards;
+          animation: slide-out 200ms ease-out forwards;
+}
+
+@-webkit-keyframes slide-in {
+  from {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-out {
+  from {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+    opacity: 0;
+  }
+}
 /*# sourceMappingURL=index.css.map */

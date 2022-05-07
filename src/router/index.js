@@ -10,6 +10,7 @@ const router = createRouter({
       // component: () => import("@/views/Login.vue"),
       component: Login,
       name: "login",
+      meta: { transitionName: "slide" },
     },
 
     {
@@ -17,6 +18,7 @@ const router = createRouter({
       // component: () => import("@/views/Login.vue"),
       component: Register,
       name: "register",
+      meta: { transitionName: "slide" },
     },
   ],
 });
