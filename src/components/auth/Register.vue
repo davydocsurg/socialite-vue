@@ -10,7 +10,7 @@
         email: "",
         handle: "",
         password: "",
-        confirm_password: "",
+        password_confirmation: "",
       },
 
       errors: {},
@@ -22,20 +22,17 @@
 
     methods: {
       async register() {
-        // const response = await this.form.post("localhost:8000/api/signup");
-        // ...
-        console.log("signin");
+        const res = await SignUpService(this.form);
 
         try {
-          const res = await SignUpService();
-
           if (res.data.status == 400 && res.data.success === false) {
             console.log(res.data);
             this.errors = res.data.message;
+            this.$toast.error("Oops! Something went wrong");
           } else if (res.data.status == 200 && res.data.success === true) {
+            this.$toast.success("Registration was successful!");
             setTimeout(() => {
-              // this.$route.
-              router.push("/login");
+              this.$router.push("/login");
             }, 1800);
           }
         } catch (error) {}
@@ -184,14 +181,14 @@
                 Confirm Password
               </label>
               <input
-                id="confirm_password"
-                v-model="form.confirm_password"
+                id="password_confirmation"
+                v-model="form.password_confirmation"
                 @keydown="clearError"
                 type="password"
-                name="confirm_password"
+                name="password_confirmation"
                 class="block w-full text-dark px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
               />
-              <FormError :errorMsg="this.errors.confirm_password" />
+              <FormError :errorMsg="this.errors.password_confirmation" />
             </div>
 
             <!-- <div class="relative">
