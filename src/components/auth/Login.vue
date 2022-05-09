@@ -1,26 +1,36 @@
 <script>
-  import Form from "vform";
-  import { Button, HasError, AlertError } from "vform/src/components/tailwind";
+  import FormError from "../../utils/FormError.vue";
+  import { SignInService } from "../../services/AuthService";
 
   export default {
-    components: {
-      Button,
-      HasError,
-      AlertError,
-    },
-
     data: () => ({
-      form: new Form({
+      form: {
         login: "",
         password: "",
-      }),
+      },
+      errors: {},
     }),
+
+    components: {
+      FormError,
+    },
 
     methods: {
       async login() {
-        const response = await this.form.post("/api/login");
-        // ...
-        console.log("signin");
+        const res = await SignInService(this.form);
+
+        try {
+          if (res.data.status == 400 && res.data.success === false) {
+            console.log(res.data);
+            this.errors = res.data.message;
+            this.$toast.error("Oops! Something went wrong");
+          } else if (res.data.status == 200 && res.data.success === true) {
+            // this.$toast.success("Registration was successful!");
+            setTimeout(() => {
+              this.$router.push("/login");
+            }, 1800);
+          }
+        } catch (error) {}
       },
     },
   };
@@ -36,16 +46,12 @@
         <div
           class="relative z-10 flex flex-col items-start justify-start p-10 bg-gray-200 shadow-2xl rounded-xl"
         >
+          <!-- @keydown="form.onKeydown($event)" -->
           <form
             method="POST"
             @submit.prevent="login"
-            @keydown="form.onKeydown($event)"
             class="relative w-full mt-6 space-y-8"
           >
-            <AlertError :form="form" />
-            <!-- <AlertErrors :form="form" /> -->
-            <!-- <AlertSuccess :form="form" message="Your changes have beend saved!" /> -->
-
             <div class="relative">
               <label
                 class="absolute px-2 ml-2 -mt-3 font-medium text-dark bg-gray-200"
@@ -61,7 +67,9 @@
                 class="block w-full text-dark px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
               />
 
-              <HasError :form="form" field="login" />
+              <span v-if="this.errors.login">
+                <FormError :errorMsg="this.errors.login[0]" />
+              </span>
             </div>
 
             <div class="relative">
@@ -77,19 +85,22 @@
                 name="password"
                 class="block w-full text-dark px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
               />
-              <HasError :form="form" field="password" />
+
+              <span v-if="this.errors.password">
+                <FormError :errorMsg="this.errors.password[0]" />
+              </span>
             </div>
 
             <!-- <div class="relative">
               <a href="#" class="text-gray-800"> Forgot password? </a>
             </div> -->
 
-            <Button
-              :form="form"
+            <button
+              type="submit"
               class="px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Log In
-            </Button>
+            </button>
 
             <div class="relative text-gray-800">
               Don't have an account?
