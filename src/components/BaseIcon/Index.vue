@@ -1,4 +1,6 @@
 <script>
+  // import iconComponent from `./icons/${this.icon}.vue`
+
   export default {
     name: "BaseIcon",
     props: {
@@ -7,14 +9,18 @@
         default: "home",
       },
     },
+
     computed: {
       iconComponent() {
-        return require(`./icons/${this.icon}`).default;
+        return new URL(`./icons/${this.icon}`, import.meta.url).default;
       },
     },
   };
 </script>
 
 <template>
-  <component :is="iconComponent" />
+  <div class="">
+    {{ icon }}
+    <component :is="iconComponent" />
+  </div>
 </template>

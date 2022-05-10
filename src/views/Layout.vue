@@ -3,6 +3,7 @@
   import Trends from "../components/Trends/Index.vue";
   // import SearchBar from "@/components/SearchBar";
   import BaseIcon from "../components/BaseIcon/Index.vue";
+  import BackIcon from "../components/BaseIcon/icons/back.vue";
   // import TweetPopup from "@/components/TweetPopup";
   // import Lightbox from "@/components/Lightbox";
   // import { mapGetters } from 'vuex'
@@ -13,6 +14,7 @@
       Sidebar,
       // TweetPopup,
       BaseIcon,
+      BackIcon,
       Trends,
       // SearchBar,
       // Lightbox,
@@ -44,7 +46,7 @@
           class="back-button"
           @click="$router.push('/')"
         >
-          <base-icon icon="back" />
+          <BackIcon />
         </div>
         <template v-if="$route.name == 'Profile'">
           <div class="profile-info">
@@ -60,9 +62,9 @@
       </div>
       <slot />
     </div>
+    <!-- <SearchBar /> -->
     <div class="layout-for-you">
       <div class="layout-for-you-fixed">
-        <!-- <SearchBar /> -->
         <Trends />
       </div>
     </div>

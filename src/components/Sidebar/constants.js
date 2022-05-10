@@ -1,27 +1,33 @@
 export const ROUTES = [
   {
     name: "Home",
+    icon: "HomeIcon",
     path: "/",
     req: true,
   },
   {
     name: "Explore",
+    icon: "ExploreIcon",
     path: "/explore",
   },
   {
     name: "Notifications",
+    icon: "NotificationIcon",
     path: "/notifications",
   },
   {
     name: "Messages",
+    icon: "MsgIcon",
     path: "/messages",
   },
   {
     name: "Bookmarks",
+    icon: "BookmarkIcon",
     path: "/bookmarks",
   },
   {
     name: "Lists",
+    icon: "ListIcon",
     path: "/lists",
   },
 ];

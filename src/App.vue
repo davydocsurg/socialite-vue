@@ -19,7 +19,7 @@
     },
 
     mounted() {
-      console.log(this.$router);
+      console.log(this.$route.meta);
     },
   };
 </script>
@@ -34,7 +34,7 @@
     </router-view>
   </component> -->
 
-  <!-- <Layout v-if="$route" />-->
+  <Layout v-if="this.$route.path !== 'login|register'" />
   <router-view v-slot="{ Component, route }">
     <transition :name="route.meta.transitionName" mode="out-in">
       <component :is="Component" />

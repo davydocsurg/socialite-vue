@@ -2,6 +2,11 @@
   import SidebarItem from "../Sidebar/Item.vue";
   import { ROUTES } from "../Sidebar/constants.js";
   import BaseIcon from "../BaseIcon/Index.vue";
+  import TwitterIcon from "../BaseIcon/icons/twitter.vue";
+  import HomeIcon from "../BaseIcon/icons/home.vue";
+  import ProfileIcon from "../BaseIcon/icons/profile.vue";
+  import NotificationsIcon from "../BaseIcon/icons/notifications.vue";
+  import ExploreIcon from "../BaseIcon/icons/explore.vue";
   // import ProfilePopup from "../Sidebar/ProfilePopup";
   import MoreMenu from "../Sidebar/MoreMenu.vue";
 
@@ -10,6 +15,11 @@
     components: {
       SidebarItem,
       BaseIcon,
+      TwitterIcon,
+      HomeIcon,
+      ProfileIcon,
+      ExploreIcon,
+      NotificationsIcon,
       MoreMenu,
       // ProfilePopup,
     },
@@ -34,10 +44,47 @@
     <div class="sidebar-nav">
       <div class="sidebar-logo">
         <router-link to="/">
-          <BaseIcon icon="twitter" />
+          <!-- <BaseIcon icon="twitter" /> -->
+          <TwitterIcon />
         </router-link>
       </div>
-      <SidebarItem
+      <!-- <div class="" v-for="(route, i) in ROUTES" :key="i"> -->
+      <div class="sidebar-item">
+        <div class="sidebar-item-logo">
+          <HomeIcon />
+        </div>
+        <div class="sidebar-item-content">Home</div>
+      </div>
+      <br />
+      <br />
+      <div class="sidebar-item">
+        <div class="sidebar-item-logo">
+          <ExploreIcon />
+        </div>
+        <div class="sidebar-item-content">Explore</div>
+      </div>
+      <br />
+      <br />
+
+      <div class="sidebar-item">
+        <div class="sidebar-item-logo">
+          <NotificationsIcon />
+        </div>
+        <div class="sidebar-item-content">Notification</div>
+      </div>
+      <br />
+      <br />
+
+      <div class="sidebar-item">
+        <div class="sidebar-item-logo">
+          <ProfileIcon />
+        </div>
+        <div class="sidebar-item-content">Profile</div>
+      </div>
+      <!-- </div> -->
+
+      <!-- icon="twitter" -->
+      <!-- <SidebarItem
         v-for="(route, i) in ROUTES"
         :key="i"
         :icon="route.name.toLowerCase()"
@@ -46,14 +93,14 @@
       >
         {{ route.name }}
       </SidebarItem>
-      <!-- :to="`/${me.username}`" -->
       <SidebarItem icon="profile" required> Profile </SidebarItem>
       <SidebarItem icon="more" @click="toggleMenu">
         More
         <MoreMenu v-if="isMenuOpened" />
-      </SidebarItem>
+      </SidebarItem> -->
       <div class="sidebar-tweet-button">
         <!-- @click="$store.commit('toggleTweetButton')" -->
+        <!-- :to="`/${me.username}`" -->
         Tweet
       </div>
     </div>
@@ -61,7 +108,7 @@
     <div class="mobile-close-menu-button">
       <!-- @click="$store.commit('setMobileMenuState', false)" -->
       <div class="icon">
-        <BaseIcon icon="left" />
+        <!-- <BaseIcon icon="left" /> -->
       </div>
       <span>Close</span>
     </div>
