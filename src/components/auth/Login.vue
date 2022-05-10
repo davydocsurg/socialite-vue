@@ -25,12 +25,27 @@
             this.errors = res.data.message;
             this.$toast.error("Oops! Something went wrong");
           } else if (res.data.status == 200 && res.data.success === true) {
-            // this.$toast.success("Registration was successful!");
+            // console.log(res.data);
+            this.setAuthToken(res.data.access_token);
+            this.$toast.success("Logged in successfully!");
+            // console.log("auth");
             setTimeout(() => {
-              this.$router.push("/login");
+              this.$router.push("/home");
             }, 1800);
           }
-        } catch (error) {}
+        } catch (error) {
+          console.error(error);
+        }
+      },
+
+      setAuthToken(token) {
+        const authToken = `Bearer ${token}`;
+        localStorage.setItem("user-token", authToken);
+        // axios.defaults.headers.common["Authorization"] = authToken;
+      },
+
+      clearError() {
+        this.errors = {};
       },
     },
   };
@@ -63,6 +78,7 @@
                 id="login"
                 v-model="form.login"
                 type="text"
+                @keydown="clearError"
                 name="login"
                 class="block w-full text-dark px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
               />
@@ -81,7 +97,8 @@
               <input
                 id="password"
                 v-model="form.password"
-                type="text"
+                type="password"
+                @keydown="clearError"
                 name="password"
                 class="block w-full text-dark px-4 py-4 mt-2 text-base placeholder-gray-400 bg-gray-200 border border-gray-500 rounded-md focus:outline-none focus:border-indigo-700"
               />

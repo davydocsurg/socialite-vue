@@ -35,7 +35,9 @@
               this.$router.push("/login");
             }, 1800);
           }
-        } catch (error) {}
+        } catch (error) {
+          console.error(error);
+        }
       },
 
       clearError() {

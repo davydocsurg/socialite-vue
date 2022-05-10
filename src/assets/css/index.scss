@@ -2,6 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+$color-blue: #1da1f2;
+$color-black: #14171a;
+$color-dark-gray: #657786;
+$color-light-gray: #aab8c2;
+$color-extra-light-gray: #e1e8ed;
+$color-bg: #15202b;
+$hr-color: #38444d;
+
+$tweet-action-green: #17bf63;
+$tweet-action-blue: #1da1f2;
+$tweet-action-red: #e0245e;
+
+$shadow-white: 0px 0px 0.5rem 0px
+  rgba(
+    $color: $color-light-gray,
+    $alpha: 0.3,
+  );
+
+$border-dark: 1px solid rgb(56, 68, 77);
+$border-light: 1px solid
+  rgba(
+    $color: $color-light-gray,
+    $alpha: 0.5,
+  );
+
+$phone-sm: 374px;
+$phone: 414px;
+$tablet: 1024px;
+
 :root {
   --textDark: #151515;
 }
@@ -49,5 +78,308 @@
   to {
     transform: translateY(-30px);
     opacity: 0;
+  }
+}
+
+.layout {
+  min-height: 100%;
+  max-width: 1290px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  &-sidebar {
+    width: 100%;
+    max-width: 300px;
+    &-fixed-container {
+      position: fixed;
+      width: 100%;
+      max-width: inherit;
+    }
+  }
+  &-flow {
+    border-right: $border-dark;
+    border-left: $border-dark;
+    width: 100%;
+    max-width: 660px;
+    min-height: 100vh;
+    .page-header {
+      border-bottom: $border-dark;
+      padding: 0.5rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      h2 {
+        margin: 1rem 0;
+      }
+      .back-button {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-right: 20px;
+        padding: 6px;
+        border-radius: 999px;
+        cursor: pointer;
+        &:hover {
+          background-color: rgba($color: $color-blue, $alpha: 0.3);
+        }
+        svg {
+          width: 100%;
+          height: 100%;
+          transform: translateX(-3px);
+          fill: $color-blue;
+        }
+      }
+      .profile-info {
+        h2 {
+          margin: 0;
+          margin-bottom: 3px;
+        }
+        span {
+          color: $color-dark-gray;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  &-for-you {
+    width: 100%;
+    max-width: 330px;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    &-fixed {
+      position: fixed;
+      width: 100%;
+      max-width: inherit;
+    }
+  }
+  .mobile-menu-toggler {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $phone) {
+  .layout-sidebar-fixed-container {
+    background-color: $color-bg;
+    transform: translateX(-100%);
+    box-shadow: $shadow-white;
+    transition: 200ms ease;
+    padding-left: 20px;
+    &.active {
+      transform: translateX(0%);
+      z-index: 666;
+    }
+  }
+  .layout-for-you {
+    &-fixed {
+      display: none;
+    }
+  }
+
+  .layout {
+    &-for-you {
+      display: none;
+      max-width: unset;
+    }
+    &-sidebar {
+      max-width: 300px;
+      width: unset;
+    }
+    .mobile-menu-toggler {
+      display: unset;
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      width: 3rem;
+      height: 3rem;
+      padding: 8px;
+      border-radius: 999px;
+      background-color: $color-blue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 555;
+      svg {
+        width: 100%;
+        height: 100%;
+        fill: #fff;
+      }
+    }
+  }
+}
+
+.trends-item {
+  padding: 1rem;
+  border-top: $border-dark;
+  h3 {
+    margin: 0;
+    color: #fff;
+  }
+  span {
+    color: $color-dark-gray;
+  }
+}
+
+aside {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .sidebar {
+    &-nav {
+      position: relative;
+    }
+    height: 100%;
+    &-logo {
+      width: 50px;
+      height: 50px;
+      padding: 10px;
+      border-radius: 999px;
+      transition: 200ms ease-in-out;
+      svg {
+        display: block;
+        width: 100%;
+        fill: #fff;
+      }
+      &:hover {
+        background-color: rgba($color: $color-blue, $alpha: 0.2);
+        svg {
+          fill: #fff;
+        }
+      }
+    }
+    &-tweet-button {
+      width: 80%;
+      text-align: center;
+      padding: 1rem 0;
+      cursor: pointer;
+      background-color: $color-blue;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.2rem;
+      border-radius: 999px;
+      margin-top: 20px;
+    }
+  }
+  .mobile-close-menu-button {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $phone) {
+  aside {
+    .mobile-close-menu-button {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      display: flex;
+      align-items: center;
+      padding: 6px;
+      border-radius: 999px;
+      background-color: $color-blue;
+      .icon {
+        width: 1.2rem;
+        height: 1.2rem;
+        svg {
+          fill: #fff;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      span {
+        color: #fff;
+        font-weight: bold;
+        margin-left: 8px;
+      }
+    }
+  }
+}
+
+.more-menu {
+  position: absolute;
+  bottom: 54px;
+  left: 0;
+  width: 260px;
+  padding: 10px;
+  background-color: $color-bg;
+  box-shadow: $shadow-white;
+  border-radius: 5px;
+  &-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 5px;
+    & + & {
+      margin-top: 10px;
+    }
+    .icon {
+      width: 1.5rem;
+      width: 1.5rem;
+      svg {
+        fill: #fff;
+      }
+    }
+    .content {
+      font-weight: bold;
+      color: #fff;
+      margin-left: 10px;
+    }
+    &:hover {
+      background-color: rgba($color: $color-dark-gray, $alpha: 0.2);
+    }
+  }
+}
+
+a {
+  display: block;
+  text-decoration: none;
+}
+
+.sidebar-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 999px;
+  transition: 120ms ease-in-out;
+  color: #fff;
+  &-logo {
+    width: 2rem;
+    height: 2rem;
+    svg {
+      transition: 20ms ease-in-out fill;
+      fill: #fff;
+    }
+  }
+  &-content {
+    transition: 20ms ease-in-out color;
+    margin: 0 20px;
+    color: inherit;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  &:hover {
+    background-color: rgba($color: $color-blue, $alpha: 0.2);
+    & {
+      color: $color-blue;
+    }
+    svg {
+      fill: $color-blue;
+    }
+  }
+}
+
+.router-link-active,
+.router-link-exact-active {
+  .sidebar-item {
+    &-logo {
+      svg {
+        fill: $color-blue;
+      }
+    }
+    &-content {
+      color: $color-blue;
+    }
   }
 }
