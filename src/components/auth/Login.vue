@@ -1,6 +1,8 @@
 <script>
   import FormError from "../../utils/FormError.vue";
   import { SignInService } from "../../services/AuthService";
+  import { mapActions, mapState } from "pinia";
+  import { useAuthStore } from "../../store/auth/index";
 
   export default {
     data: () => ({
@@ -11,11 +13,16 @@
       errors: {},
     }),
 
+    computed: {
+      ...mapState(useAuthStore, ["authenticated"]),
+    },
+
     components: {
       FormError,
     },
 
     methods: {
+      ...mapActions(useAuthStore, ["getAuthToken", "getAuthUserDetails"]),
       async login() {
         const res = await SignInService(this.form);
 
@@ -28,7 +35,8 @@
             // console.log(res.data);
             this.setAuthToken(res.data.access_token);
             this.$toast.success("Logged in successfully!");
-            // console.log("auth");
+            this.getAuthToken();
+            console.log(this.authenticated);
             setTimeout(() => {
               this.$router.push("/home");
             }, 1800);

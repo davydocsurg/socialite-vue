@@ -71,7 +71,9 @@
     </transition>
   </router-view> -->
 
-  <!-- <Layout v-if="this.$route.path !== 'login'" /> -->
+  <div class="" v-if="this.authenticated">
+    <Layout />
+  </div>
   <router-view v-slot="{ Component, route }">
     <transition :name="route.meta.transitionName" mode="out-in">
       <component :is="Component" />
