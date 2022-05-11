@@ -12,3 +12,7 @@ export const SignInService = async (credentials) => {
 export const SignOutService = async () => {
   return await API.post(Endpoints.signOut);
 };
+
+export const AuthDetailsService = async () => {
+  return await API.get(Endpoints.authUser);
+};

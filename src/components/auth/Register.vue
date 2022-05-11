@@ -203,9 +203,10 @@
             >
               Register
             </button>
-
-            <div class="relative text-gray-800">
-              Already have an account?
+          </form>
+          <div class="w-full flex flex-col no-wrap text-gray-800 mt-4">
+            <div class="w-1/2">Already have an account?</div>
+            <div class="w-1/2">
               <router-link
                 to="/login"
                 class="text-indigo-700 hover:text-indigo-800 font-medium"
@@ -213,7 +214,7 @@
                 Login
               </router-link>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

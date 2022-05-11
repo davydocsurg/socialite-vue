@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Login from "../components/auth/Login.vue";
 import Register from "../components/auth/Register.vue";
 import Home from "../views/Home.vue";
+import { useAuthStore } from "../store/auth/index";
 
 const authGuard = (to, from, next) => {
   if (isLo) {
@@ -46,27 +47,25 @@ const router = createRouter({
   ],
 });
 
-const isAuthenticated = () => {
-  return localStorage.getItem("user-token");
-};
-
 router.beforeEach((to, from, next) => {
   const isLo = localStorage.getItem("user-token");
   const publicRoutes = ["/login", "/register"];
   const authRequired = publicRoutes.includes(to.path);
+  const auth = useAuthStore();
 
   if (
     // make sure the user is authenticated
-    isAuthenticated() &&
+    auth.authenticated &&
     // ❗️ Avoid an infinite redirect
     authRequired
   ) {
     // redirect the user to the login page
     next({ name: "Home" });
-  } else if (!isAuthenticated() && !authRequired) {
+  } else if (!auth.authenticated && !authRequired) {
     next({ name: "Login" });
   } else {
     next();
+    // console.log(auth.authenticated);
   }
 
   // console.log(from.path, to.path);
