@@ -1,5 +1,5 @@
 import axios from "axios";
-// import { useAuthStore } from "../store/auth";
+import { useAuthStore } from "../store/auth";
 
 const baseURL = "http://localhost:8000/api";
 
@@ -9,11 +9,17 @@ const API = axios.create({
 
 API.interceptors.request.use((request) => {
   const token = localStorage.getItem("user-token");
+  // console.log(token, "uhwcihjfihi");
   // const { auth } = store.getState();
   if (token) {
     request.headers.common.Authorization = `${token}`;
   }
-
+  // else {
+  // console.log("logging out");
+  // const auth = useAuthStore();
+  // auth.$reset();
+  //   location.href = "/login";
+  // }
   return request;
 });
 
@@ -31,7 +37,10 @@ API.interceptors.response.use(
         // store.dispatch(SignOutAction());
         console.log("called................");
         localStorage.removeItem("user-token");
-        location.href = "/signin";
+        console.log("logging out");
+        const auth = useAuthStore();
+        auth.$reset();
+        location.href = "/login";
 
         return Promise.reject("Session expired. Please login.");
       } else if (status === 503) {

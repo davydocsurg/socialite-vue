@@ -1,5 +1,5 @@
 <script setup>
-  import { onMounted, onBeforeMount } from "vue";
+  import { onMounted, onBeforeMount, watchEffect } from "vue";
   import { useAuthStore } from "./store/auth/index";
   import { useRoute } from "vue-router";
   import { computed } from "vue";
@@ -15,6 +15,16 @@
     console.log(currentPath);
     // this.getAuthToken();
   });
+
+  // watchEffect(async () => {
+  //   const token = await localStorage.getItem("user-token");
+  //   if (!token) {
+  //     auth.$reset();
+  //     console.log("logging out");
+  //     // $router.push("/login");
+  //     // location.href = "/login";
+  //   }
+  // });
 </script>
 
 <script>
@@ -42,6 +52,7 @@
       fetchAuthTweep() {
         if (this.authenticated) {
           this.getAuthUserDetails();
+          // console.log();
         }
       },
       // checkRoutes() {
@@ -52,33 +63,34 @@
 
     beforeMount() {
       this.getAuthToken();
+      // this.fetchAuthTweep();
     },
 
     mounted() {
       this.fetchAuthTweep();
-      // console.log(this.$route);
     },
   };
 </script>
 
 <template>
-  <!-- <router-view v-slot="{ Component, route }"> -->
-  <!-- <router-view>
-    <transition :name="this.$route.meta.transitionName" mode="out-in">
-      <component :is="this.authenticated ? 'Layout' : 'div'">
-        <component :is="Component" />
-      </component>
-    </transition>
-  </router-view> -->
+  <div class="">
+    <component :is="auth.authenticated ? 'Layout' : 'div'">
+      <router-view v-slot="{ Component, route }">
+        <transition :name="route.meta.transitionName" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+    </component>
 
-  <div class="" v-if="this.authenticated">
+    <!-- <div class="" v-if="this.authenticated">
     <Layout />
   </div>
   <router-view v-slot="{ Component, route }">
     <transition :name="route.meta.transitionName" mode="out-in">
       <component :is="Component" />
     </transition>
-  </router-view>
+  </router-view> -->
+  </div>
 </template>
 
 <style>

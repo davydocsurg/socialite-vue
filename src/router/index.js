@@ -61,13 +61,13 @@ router.beforeEach((to, from, next) => {
     // ❗️ Avoid an infinite redirect
     authRequired
   ) {
-    ui.unDefAuthRoute();
+    // ui.unDefAuthRoute();
     // ui.authRoutes = false;
     // redirect the user to the login page
     next({ name: "Home" });
   } else if (!auth.authenticated && !authRequired) {
     // ui.authRoutes = true;
-    ui.defAuthRoute();
+    // ui.defAuthRoute();
     console.log(ui.authRoutes, "lo");
     next({ name: "Login" });
   } else {
