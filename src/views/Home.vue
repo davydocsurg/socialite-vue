@@ -22,11 +22,11 @@
 </script>
 
 <template>
-  <div class="home">
+  <section class="home">
     <AddTweet />
     <hr class="gap" />
     <div class="tweet-wrapper">
       <Tweet />
     </div>
-  </div>
+  </section>
 </template>

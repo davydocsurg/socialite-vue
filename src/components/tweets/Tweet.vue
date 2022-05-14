@@ -32,11 +32,13 @@
         <div class="tweet-content">
           <div class="tweet-content-header">
             <p>
-              {{ tweet.tweep.first_name + " " + tweet.tweep.last_name }}
-              <span class="nickname text-gray-300">{{
-                tweet.tweep.handle
-              }}</span>
-              <span>&#183;</span>
+              <span class="text-xl">
+                {{ tweet.tweep.first_name + " " + tweet.tweep.last_name }}
+              </span>
+              <span class="nickname text-gray-300">
+                @{{ tweet.tweep.handle }}
+              </span>
+              <!-- <span>&#183;</span> -->
               <!-- <span class="created-at">
                 {{ moment(tweet.created_at).fromNow() }}
               </span> -->
@@ -61,23 +63,23 @@
               </div>
             </div>
           </div>
-          <!-- <div  class="tweet-content-actions">
+          <div class="tweet-content-actions">
             <div class="action-item comment">
-              <base-icon icon="comment" />
+              <Comment />
               <span>5</span>
             </div>
             <div class="action-item retweet">
-              <base-icon icon="retweet" />
+              <Retweet />
               <span>5</span>
             </div>
             <div class="action-item like">
-              <base-icon icon="like" />
+              <Like />
               <span>5</span>
             </div>
             <div class="action-item comment">
-              <base-icon icon="share" />
+              <Share />
             </div>
-          </div> -->
+          </div>
           <!-- <div class="tweet-content-edit-actions">
             <div class="action-item cancel" @click="handleCancelEdit">
               Cancel

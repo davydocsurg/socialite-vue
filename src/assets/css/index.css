@@ -426,12 +426,12 @@
 }
 
 .tweet-owner {
-  max-width: 6rem !important;
-  max-height: 6rem !important;
+  max-height: 3rem !important;
+  max-width: 3rem !important;
 }
 
 .tweet-owner img {
-  width: 50% !important;
+  width: 100% !important;
   border-radius: 999px !important;
 }
 
@@ -473,10 +473,6 @@
   margin: 8px 0;
   font-weight: bold;
   color: #fff;
-}
-
-.tweet-content-header p span {
-  color: #657786;
 }
 
 .tweet-content-header p span + span {
