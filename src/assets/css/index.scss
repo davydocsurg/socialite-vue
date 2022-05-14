@@ -356,15 +356,15 @@ $tablet: 1024px;
     background-color: rgba($color: $color-dark-gray, $alpha: 0.2);
   }
   &-owner {
-    min-width: 3rem;
-    min-height: 3rem;
+    max-width: 6rem !important;
+    max-height: 6rem !important;
     img {
-      width: 100%;
-      border-radius: 999px;
+      width: 50% !important;
+      border-radius: 999px !important;
     }
   }
   &-content {
-    margin-left: 10px;
+    margin-left: 3px;
     flex-grow: 1;
     &-edit-tweet {
       border: $border-dark;

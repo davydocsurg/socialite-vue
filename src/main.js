@@ -1,4 +1,5 @@
 import { createApp } from "vue";
+import moment from "moment";
 import App from "./App.vue";
 import { createPinia } from "pinia";
 import router from "./router";
@@ -14,6 +15,7 @@ import Spinner from "./components/loaders/Spinner.vue";
 const app = createApp(App);
 
 app.use(router);
+app.use(moment);
 app.component("Loading", Loading).component("Spinner", Spinner);
 app.use(VueToast, {
   position: "top-right",

@@ -5,6 +5,8 @@ export const useAuthStore = defineStore("authStore", {
   state: () => {
     return {
       authTweep: null,
+      authTweetsCount: null,
+      authTweets: null,
       profilePicsUrl: "http://localhost:8000/profile/photos/",
       authenticated: false,
       loading: false,
@@ -14,10 +16,6 @@ export const useAuthStore = defineStore("authStore", {
       errors: {},
     };
   },
-
-  // beforeMount() {
-
-  // },
 
   getters: {
     authStatus(state) {
@@ -44,13 +42,8 @@ export const useAuthStore = defineStore("authStore", {
           // this.$toast.error("Oops! Something went wrong");
         } else if (res.data.status == 200 && res.data.success === true) {
           this.authTweep = res.data.credentials;
-          // commit("authTweep", res.data);
-          console.log(this.authTweep);
-          console.log(res.data);
-          // this.$toast.success("Registration was successful!");
-          // setTimeout(() => {
-          //   this.$router.push("/login");
-          // }, 1800);
+          this.authTweetsCount = res.data.authUserTweetsCount;
+          this.authTweets = res.data.authUserTweetsCount;
         }
       } catch (error) {
         console.error(error);

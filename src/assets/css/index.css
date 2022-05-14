@@ -426,17 +426,17 @@
 }
 
 .tweet-owner {
-  min-width: 3rem;
-  min-height: 3rem;
+  max-width: 6rem !important;
+  max-height: 6rem !important;
 }
 
 .tweet-owner img {
-  width: 100%;
-  border-radius: 999px;
+  width: 50% !important;
+  border-radius: 999px !important;
 }
 
 .tweet-content {
-  margin-left: 10px;
+  margin-left: 3px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;

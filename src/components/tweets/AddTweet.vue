@@ -7,13 +7,6 @@
       ...mapState(useAuthStore, ["authTweep", "profilePicsUrl"]),
     },
 
-    mounted() {
-      setTimeout(() => {
-        console.log(this.profilePicsUrl + this.authTweep.profile_picture);
-        // console.log(this.profPicsUrl() + this.authTweepPP());
-      }, 1200);
-    },
-
     methods: {
       // authTweepPP: () => this.authTweep.profile_picture,
     },
@@ -32,24 +25,15 @@
     </div>
     <!-- <div class="add-tweet-content">
       <div class="tweet-section">
-        <textarea
-          v-model="tweetContent.text"
-          placeholder="What's happening?"
-        />
-        <div
-          v-if="tweetContent.imageList"
-          class="tweet-section-images"
-        >
+        <textarea v-model="tweetContent.text" placeholder="What's happening?" />
+        <div v-if="tweetContent.imageList" class="tweet-section-images">
           <div
             v-for="(image, i) in tweetContent.imageList"
             :key="i"
             class="image-container"
           >
-            <img :src="image.url">
-            <div
-              class="close-button"
-              @click="deleteImage(i)"
-            >
+            <img :src="image.url" />
+            <div class="close-button" @click="deleteImage(i)">
               <base-icon icon="close" />
             </div>
           </div>
@@ -68,7 +52,7 @@
               accept="image/*"
               hidden
               @change="showFiles"
-            >
+            />
           </div>
           <div class="controls-media-item">
             <base-icon icon="gif" />
@@ -81,10 +65,7 @@
           </div>
         </div>
         <div class="controls-submit">
-          <button
-            :disabled="!hasTweetText()"
-            @click="handleSubmit"
-          >
+          <button :disabled="!hasTweetText()" @click="handleSubmit">
             Tweet
           </button>
         </div>

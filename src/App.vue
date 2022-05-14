@@ -1,6 +1,7 @@
 <script setup>
   import { onMounted, onBeforeMount, watchEffect } from "vue";
   import { useAuthStore } from "./store/auth/index";
+  import { useTweetsStore } from "./store/tweets/index";
   import { useRoute } from "vue-router";
   import { computed } from "vue";
 
@@ -48,6 +49,7 @@
 
     methods: {
       ...mapActions(useAuthStore, ["getAuthToken", "getAuthUserDetails"]),
+      ...mapActions(useTweetsStore, ["getAllTweets"]),
 
       fetchAuthTweep() {
         if (this.authenticated) {
@@ -68,6 +70,7 @@
 
     mounted() {
       this.fetchAuthTweep();
+      this.getAllTweets();
     },
   };
 </script>
