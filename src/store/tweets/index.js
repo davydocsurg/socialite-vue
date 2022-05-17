@@ -9,7 +9,7 @@ export const useTweetsStore = defineStore("tweetStore", {
       tweetPicsUrl: "http://localhost:8000/tweets/photos/",
       tweepProfUrl: "http://localhost:8000/profile/photos/",
       loading: false,
-      errors: {},
+      errors: null,
       tweet_text: "",
       tweet_photo: "",
     };
@@ -51,5 +51,9 @@ export const useTweetsStore = defineStore("tweetStore", {
     } catch (error) {
       console.error(error);
     }
+  },
+
+  clearError() {
+    this.errors = null;
   },
 });

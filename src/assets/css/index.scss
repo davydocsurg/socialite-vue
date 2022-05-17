@@ -35,6 +35,10 @@ $tablet: 1024px;
   --textDark: #151515;
 }
 
+body {
+  transition: all 0.7s ease-in-out !important;
+}
+
 .fade-enter {
   opacity: 0;
 }
@@ -251,6 +255,8 @@ $tablet: 1024px;
         display: flex;
         padding: 1rem;
         .image-container {
+          transition: all 1s ease-in-out !important;
+
           & + .image-container {
             margin-left: 15px;
           }

@@ -17,13 +17,25 @@
 
     methods: {
       ...mapActions(useTweetsStore, ["getAllTweets"]),
+
+      tweetSent() {
+        this.$toast.success("Tweet sent!");
+      },
+
+      tweetErr() {
+        this.$toast.error("Oops! Something went wrong");
+      },
     },
   };
 </script>
 
 <template>
   <section class="home">
-    <AddTweet />
+    <AddTweet
+      @tweet-error="tweetErr"
+      @tweet-sent="tweetSent"
+      @refreshTweets="this.getAllTweets"
+    />
     <hr class="gap" />
     <div class="tweet-wrapper">
       <Tweet />
