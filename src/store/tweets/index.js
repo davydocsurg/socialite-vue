@@ -12,6 +12,8 @@ export const useTweetsStore = defineStore("tweetStore", {
       errors: null,
       tweet_text: "",
       tweet_photo: "",
+      openImg: false,
+      tweetViewerImg: null,
     };
   },
 
@@ -33,27 +35,37 @@ export const useTweetsStore = defineStore("tweetStore", {
         console.error(error);
       }
     },
-  },
 
-  async createTweet() {
-    const res = await SendTweetService();
+    clearError() {
+      this.errors = null;
+    },
 
-    try {
-      if (res.status == 400) {
-        this.errors = res.message;
-        console.warn(this.errors);
-        // this.$toast.error("Oops! Something went wrong");
-      } else if (res.status == 200) {
-        this.getAllTweets();
-        // this.allTweets = res.data;
-        // console.log(this.allTweets);
+    openImgViewer(payload) {
+      // console.log("open");
+      this.openImg = true;
+      this.tweetViewerImg = payload;
+    },
+
+    closeImgViewer() {
+      this.openImg = false;
+    },
+
+    async createTweet() {
+      const res = await SendTweetService();
+
+      try {
+        if (res.status == 400) {
+          this.errors = res.message;
+          console.warn(this.errors);
+          // this.$toast.error("Oops! Something went wrong");
+        } else if (res.status == 200) {
+          this.getAllTweets();
+          // this.allTweets = res.data;
+          // console.log(this.allTweets);
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
-    }
-  },
-
-  clearError() {
-    this.errors = null;
+    },
   },
 });

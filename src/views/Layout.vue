@@ -4,9 +4,10 @@
   // import SearchBar from "@/components/SearchBar";
   import BaseIcon from "../components/BaseIcon/Index.vue";
   import BackIcon from "../components/BaseIcon/icons/back.vue";
-  // import TweetPopup from "@/components/TweetPopup";
-  // import Lightbox from "@/components/Lightbox";
-  // import { mapGetters } from 'vuex'
+  // import TweetPopup from "../components/tweets/TweetPopup";
+  import ImageViewer from "../components/tweets/ImageViewer.vue";
+  import { mapState, mapActions } from "pinia";
+  import { useTweetsStore } from "../store/tweets/index";
 
   export default {
     // name: "Layout",
@@ -17,17 +18,19 @@
       BackIcon,
       Trends,
       // SearchBar,
-      // Lightbox,
+      ImageViewer,
     },
-    // computed: {
-    //   ...mapGetters([
-    //     'getMe',
-    //     'getTweetPopupState',
-    //     'getProfileTweetCount',
-    //     'getLightboxState',
-    //     'getMobileMenuState'
-    //   ])
-    // }
+    computed: {
+      ...mapState(useTweetsStore, ["openImg"]),
+    },
+
+    methods: {
+      ...mapActions(useTweetsStore, ["openImgViewer"]),
+
+      hello() {
+        console.log("hello");
+      },
+    },
   };
 </script>
 
@@ -68,19 +71,15 @@
         <Trends />
       </div>
     </div>
+    <div class="" v-if="this.openImg">
+      <ImageViewer @zoomTweetImg="hello" />
+    </div>
     <!-- <tweet-popup v-if="getTweetPopupState" /> -->
-    <!-- <Lightbox
-      v-if="getLightboxState.state"
-      :images="getLightboxState.images"
-    /> -->
+    <!-- v-if="getLightboxState.state"
+      :images="getLightboxState.images" -->
     <div class="mobile-menu-toggler">
       <!-- @click="$store.commit('setMobileMenuState', !getMobileMenuState)" -->
       <BaseIcon icon="hamburger" />
     </div>
   </div>
 </template>
-
-<style>
-  /* // @import '@/assets/theme/colors.scss'; */
-  /* // @import '@/assets/variables.scss'; */
-</style>

@@ -4,6 +4,17 @@
   import Loading from "../loaders/Loading.vue";
 
   export default {
+    setup(props, context) {
+      function viewPhoto() {
+        console.log("emit");
+        context.emit("zoomTweetImg");
+      }
+
+      return {
+        viewPhoto,
+      };
+    },
+
     components: {
       Loading,
     },
@@ -18,6 +29,10 @@
 
     mounted() {
       console.log(this.tweepProfUrl);
+    },
+
+    methods: {
+      ...mapActions(useTweetsStore, ["openImgViewer"]),
     },
   };
 </script>
@@ -57,8 +72,13 @@
                 <!-- v-for="(tweetPhoto, i) in tweet"
                   :key="i" -->
                 <div class="tweet-content-image-item">
-                  <img :src="this.tweetPicsUrl + tweet.tweet_photo" />
-                  <!-- @click="$store.dispatch('setLightbox', tweetImages)" -->
+                  <img
+                    :src="this.tweetPicsUrl + tweet.tweet_photo"
+                    @click="
+                      this.openImgViewer(this.tweetPicsUrl + tweet.tweet_photo)
+                    "
+                  />
+                  <!-- this.openImgViewer(this.tweetPicsUrl + tweet.tweet_photo) -->
                 </div>
               </div>
             </div>
