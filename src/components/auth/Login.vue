@@ -39,6 +39,7 @@
             console.log(this.authenticated);
             setTimeout(() => {
               this.$router.push("/home");
+              location.reload();
             }, 1800);
           }
         } catch (error) {

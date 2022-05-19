@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { AuthDetailsService } from "../../services/AuthService";
+import { AuthDetailsService, SignOutService } from "../../services/AuthService";
 
 export const useAuthStore = defineStore("authStore", {
   state: () => {
@@ -44,6 +44,26 @@ export const useAuthStore = defineStore("authStore", {
           this.authTweep = res.data.credentials;
           this.authTweetsCount = res.data.authUserTweetsCount;
           this.authTweets = res.data.authUserTweetsCount;
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async logOut() {
+      const res = await SignOutService();
+
+      try {
+        if (res.data.status == 400 && res.data.success === false) {
+          this.errors = res.data.message;
+          console.warn(this.errors);
+          // this.$toast.error("Oops! Something went wrong");
+        } else if (res.data.status == 200 && res.data.success === true) {
+          localStorage.removeItem("user-token");
+
+          setTimeout(() => {
+            location.href = "/login";
+          }, 800);
         }
       } catch (error) {
         console.error(error);

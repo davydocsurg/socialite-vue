@@ -7,7 +7,7 @@
   import ProfileIcon from "../BaseIcon/icons/profile.vue";
   import NotificationsIcon from "../BaseIcon/icons/notifications.vue";
   import ExploreIcon from "../BaseIcon/icons/explore.vue";
-  // import ProfilePopup from "../Sidebar/ProfilePopup";
+  import ProfilePopup from "../Sidebar/ProfilePopUp.vue";
   import MoreMenu from "../Sidebar/MoreMenu.vue";
 
   export default {
@@ -21,7 +21,7 @@
       ExploreIcon,
       NotificationsIcon,
       MoreMenu,
-      // ProfilePopup,
+      ProfilePopup,
     },
 
     data: () => {
@@ -104,7 +104,7 @@
         Tweet
       </div>
     </div>
-    <!-- <profile-popup /> -->
+    <ProfilePopup />
     <div class="mobile-close-menu-button">
       <!-- @click="$store.commit('setMobileMenuState', false)" -->
       <div class="icon">
